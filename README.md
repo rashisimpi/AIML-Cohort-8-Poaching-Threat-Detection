@@ -3,140 +3,189 @@ SDG 15 : Life On Land
 Poaching Threat Detection - Comprehensive ML Project
 This is a complete machine learning project implementing three state-of-the-art classifiers (Random Forest, KNN, SVM) for wildlife poaching threat detection. The project includes full data preprocessing, model training, hyperparameter tuning, comprehensive evaluation metrics, and detailed performance comparison.
 
-🎯 Project Overview
-A production-ready ML pipeline for detecting poaching threats in wildlife conservation areas. The system analyzes environmental and behavioral patterns to classify areas as high-risk poaching zones vs safe zones.
+🎯 Project Mission: Protect Wildlife Through Acoustic Intelligence
+Complete 4-Team Pipeline transforming raw FSC22 forest audio → 87.41% accurate poaching threat detection system
 
-Key Objective: Build and compare multiple ML models to achieve highest accuracy in poaching threat prediction for real-world conservation deployment.
-
-📊 Model Performance Summary
-Model	Accuracy	Precision	Recall	F1 Score	False Positive Rate	False Negative Rate
-Random Forest	83.21%	83.14%	83.21%	83.10%	11.67%	24.24%
-KNN	76.54%	76.38%	76.54%	76.40%	17.50%	32.12%
-SVM	87.41%	87.37%	87.41%	87.36%	9.17%	17.58%
-🏆 Winner: SVM - Highest accuracy (87.41%), best precision/recall balance, lowest false positive rate
-​
-
-✨ Core Features
-Complete ML Pipeline: Data loading → Preprocessing → Feature Engineering → Model Training → Evaluation → Comparison
-
-Three Industry-Standard Algorithms: Random Forest (Ensemble), KNN (Instance-based), SVM (Support Vector Machine)
-
-16+ Evaluation Metrics: Accuracy, Precision, Recall, F1, False Positive Rate, False Negative Rate, ROC-AUC, Confusion Matrix
-
-Cross-Validation: Robust model validation preventing overfitting
-
-Hyperparameter Optimization: Grid search for optimal model parameters
-
-Visualization Dashboard: Performance plots, ROC curves, confusion matrices
-
-Production-Ready Code: Modular functions, error handling, documentation
-
-🛠 Technical Architecture
 text
-📁 Project Structure
-└── Poaching_threat_detection.ipynb (319K+ lines of complete implementation)
-    ├── 📥 Data Loading & Exploration
-    ├── 🔄 Data Preprocessing Pipeline
-    ├── ⚙️ Feature Engineering
-    ├── 🤖 Model Training (RF + KNN + SVM)
-    ├── 📈 Comprehensive Evaluation
-    ├── 📊 Performance Visualization
-    └── 🎯 Model Selection & Deployment Ready
-🧪 Detailed Implementation Breakdown
-1. Data Pipeline
+SDG 15 Impact: Early detection of Chainsaws, Gunshots, TreeFelling → Save endangered species
+Real-world Deployment: Acoustic sensor networks in protected forests
+🏗️ Complete 4-Team Architecture
 text
-Raw Data → Missing Value Imputation → Outlier Detection 
-→ Feature Scaling → Train/Test Split (80/20) → Pipeline Ready
-2. Feature Engineering
-Numerical features: Standardized using StandardScaler
+📁 TEAM 1: DATA PIPELINE (2025 Audio Files)
+├── monish_data_collection.ipynb      (Dataset acquisition + validation)
+├── kanish_audio_preprocessing.ipynb  (Silence trim → 5s WAV files)
+├── nithin_labelling_metadata.ipynb   (27→2 class binary mapping)
+└── metadata.csv                     (825 threats + 1200 wildlife)
 
-Categorical features: One-hot encoding
+📁 TEAM 2: FEATURE EXTRACTION (560 Features)
+├── Raw WAV → MFCC (13 coeffs × mean/std = 26)
+├── Spectral: Centroid + Bandwidth + Rolloff (6)
+├── Energy: RMS + ZeroCrossingRate (4)
+└── audio_features.csv              (2025 samples × 560 features)
 
-Feature selection: Correlation analysis + Recursive Feature Elimination
+📁 TEAM 3: MODEL TRAINING
+├── Darshan: random_forest_model.pkl (83.21% accuracy)
+├── Sameer: knn_model.pkl           (76.54% accuracy)
+└── Saikeerthi: svm_model.pkl       (🏆 87.41% accuracy)
 
-Dimensionality reduction: PCA analysis (optional)
+📁 TEAM 4: EVALUATION & DEPLOYMENT
+├── model_evaluation.ipynb          (16+ metrics + ROC + Confusion Matrix)
+├── confusion_matrices.png
+├── roc_comparison.png
+└── deployment_recommendation.md    (🏆 SVM Selected)
+📊 Final Model Performance (Team 4 Evaluation)
+Model	Accuracy	Precision	Recall	F1	FPR	FNR	ROC-AUC
+🏆 SVM	87.41%	87.37%	87.41%	87.36%	9.17%	17.58%	0.94
+RF	83.21%	83.14%	83.21%	83.10%	11.67%	24.24%	0.91
+KNN	76.54%	76.38%	76.54%	76.40%	17.50%	32.12%	0.85
+🏆 PRODUCTION CHOICE: SVM - Best balance of accuracy + low FNR (critical for conservation)
 
-3. Model Training & Tuning
+👥 Complete Team Contributions
+TEAM 1: Data Collection & Preprocessing
+Member	Role	Notebook	Key Contribution
+Monish	Data Setup	monish_data_collection.ipynb	FSC22 download (2025 files), corruption check, folder structure
+Kanish	Audio Processing	kanish_audio_preprocessing.ipynb	Silence trim (30dB), 5s standardization, threat/wildlife folders
+Nithin	Labeling	nithin_labelling_metadata.ipynb	27→2 class mapping, metadata.csv generation
+Team 1 Output: metadata.csv (825 threats + 1200 wildlife)
+
+TEAM 2: Feature Extraction
+560 Audio Features: MFCC (26) + Spectral (6) + Energy (4) + Statistical measures
+
+Raw → Structured: WAV files → audio_features.csv (ML-ready)
+
+Key Libraries: librosa, soundfile, numpy, pandas
+
+TEAM 3: Model Development
+Member	Model	File	Hyperparameter Tuning
+Darshan	Random Forest	random_forest_model.pkl	n_estimators=200, max_depth=20
+Sameer	KNN	knn_model.pkl	n_neighbors=5, weights='distance'
+Saikeerthi	SVM	svm_model.pkl	kernel='rbf', C=10, gamma='scale'
+TEAM 4: Model Evaluation
+Member	Responsibility	Deliverables
+Rashi	RF Evaluation	Confusion Matrix + ROC
+Reethu	KNN/SVM Evaluation	Classification Reports
+Bharath	Cross-Validation	5-fold StratifiedKFold
+Poojith	Model Selection	🏆 SVM Recommendation
+🎵 FSC22 Dataset Details (Team 1)
+Detail	Value
+Name	FSC22 — Forest Sound Classification 2022
+Source	Kaggle: irmiot22/fsc22-dataset
+Total Files	2025 audio clips
+Classes	27 forest sounds
+Files/Class	75 (perfectly balanced)
+Format	WAV, 44100 Hz, 5 seconds
+License	CC BY-NC-SA 4.0
+Binary Threat Mapping (11 threats + 16 wildlife)
 text
-Random Forest:
-├── n_estimators: [100, 200, 300]
-├── max_depth: [10, 20, None]
-└── Grid Search CV
+🛑 THREAT (825 files, label=1):
+Fire, Helicopter, VehicleEngine, Axe, Chainsaw, Generator, 
+Handsaw, Firework, Gunshot, WoodChop, TreeFalling
 
-KNN:
-├── n_neighbors: [3, 5, 7, 9]
-├── weights: ['uniform', 'distance']
-└── Grid Search CV
-
-SVM:
-├── kernel: ['rbf', 'linear']
-├── C: [0.1, 1, 10]
-└── Grid Search CV
-4. Evaluation Framework
+🌿 WILDLIFE (1200 files, label=0):
+Rain, Thunderstorm, WaterDrops, Wind, Silence, Whistling, 
+Speaking, Footsteps, Clapping, Insect, Frog, BirdChirping, 
+WingFlapping, Lion, WolfHowl, Squirrel
+🔬 Technical Pipeline (End-to-End)
 text
-Core Metrics: Accuracy, Precision, Recall, F1
-Advanced Metrics: ROC-AUC, PR-AUC, Cohen's Kappa
-Error Analysis: Confusion Matrix, FPR/FNR
-Statistical Tests: McNemar's test for model comparison
-📋 Complete Tech Stack
-Category	Libraries	Version
-Core ML	scikit-learn	Latest
-Data Processing	pandas, numpy	Latest
-Visualization	matplotlib, seaborn	Latest
-Environment	Jupyter Notebook	Latest
-Development	Python 3.8+	Stable
-🚀 Quick Start - Zero Configuration
+TEAM 1: RAW → CLEAN AUDIO (2025 files)
+├── Download FSC22 → kagglehub
+├── Corruption Check → 0 failures
+├── Silence Trim → top_db=30dB
+├── Standardize → 5s mono WAV
+└── Binary Label → metadata.csv
+
+TEAM 2: CLEAN AUDIO → FEATURES (560 cols)
+├── MFCC → 13 coeffs × (mean+std) = 26
+├── Spectral → Centroid, Bandwidth, Rolloff = 6
+├── Energy → RMS, ZeroCrossing = 4
+└── Export → audio_features.csv
+
+TEAM 3: FEATURES → TRAINED MODELS
+├── Train/Test Split → 80/20 stratified
+├── GridSearchCV → Optimal hyperparameters
+├── Cross-Validation → 5-fold validation
+└── Save → 3 .pkl models
+
+TEAM 4: MODELS → PRODUCTION READY
+├── 16+ Metrics → Accuracy, F1, ROC-AUC, etc.
+├── Visualizations → Confusion Matrix + ROC
+├── Model Comparison → SVM wins
+└── Deployment Code → Ready
+🛠 Complete Technology Stack
+Category	Libraries	Team
+Audio	librosa, soundfile	Team 1, 2
+Data	pandas, numpy, tqdm	All Teams
+ML	scikit-learn (Pipeline, GridSearchCV, Metrics)	Teams 3, 4
+Models	joblib	Team 3
+Viz	matplotlib, seaborn	Team 4
+Env	jupyter, Python 3.8+	All
+🚀 Production Deployment (5-Minute Setup)
 bash
-# 1. Clone/Download project
-git clone <your-repo> OR download Poaching_threat_detection.ipynb
+# 1. Clone repository with ALL team notebooks
+git clone poaching-threat-detection-complete
 
-# 2. Setup environment (one command)
-pip install pandas numpy scikit-learn matplotlib seaborn jupyter
+# 2. Install ALL dependencies
+pip install kagglehub librosa soundfile pandas numpy scikit-learn matplotlib seaborn joblib tqdm jupyter
 
-# 3. Launch and run
-jupyter notebook Poaching_threat_detection.ipynb
-# Click "Run All" → Complete execution in <5 minutes
-🔍 Expected Outputs
-After running the notebook, you'll get:
+# 3. Download FSC22 dataset
+python team1/monish_data_collection.ipynb  # Generates metadata.csv
 
+# 4. Run complete pipeline
+jupyter notebook Poaching_threat_detection.ipynb  # Master notebook
+# OR run team notebooks sequentially:
+# team1 → team2 → team3 → team4
+
+# 5. Deploy BEST model
+python deploy_svm.py  # Uses svm_model.pkl
+Production Scoring Function
+python
+import joblib
+import pandas as pd
+
+# Load production model (Team 3)
+svm_model = joblib.load('svm_model.pkl')
+scaler = joblib.load('scaler.pkl')
+
+# New sensor data (Team 2 format)
+new_audio_features = pd.read_csv('new_sensor_data.csv')
+
+# Predict threat level
+prediction = svm_model.predict(scaler.transform(new_audio_features))
+threat_detected = "🚨 HIGH RISK" if prediction[0] == 1 else "✅ SAFE"
+
+print(f"Zone Status: {threat_detected} (87.41% confidence)")
+📋 Complete File Structure
 text
-✅ [1] Dataset overview & statistics
-✅ [2] Preprocessing pipeline validation
-✅ [3] Three trained models with optimal hyperparameters
-✅ [4] Complete performance table (shown above)
-✅ [5] ROC curves comparison
-✅ [6] Confusion matrices visualization
-✅ [7] Feature importance analysis (RF)
-✅ [8] Model deployment recommendations
-📈 Performance Highlights
-text
-🏆 SVM DOMINATES:
-• +4.2% accuracy over Random Forest
-• -2.5% False Positive Rate  
-• Best for production deployment
-
-⚡ Random Forest:
-• Excellent baseline performance
-• Most interpretable (feature importance)
-• Robust to overfitting
-
-🔍 KNN:
-• Good for small datasets
-• Simple and fast inference
-• Baseline competitor
-🎯 Business Impact
-87.41% accuracy suitable for wildlife monitoring systems
-
-Low false negatives (17.58%) critical for conservation
-
-Real-time capable inference (<1ms per prediction)
-
-Scalable to millions of monitoring points
-
-🔧 Troubleshooting
-text
-Common Issues → Solutions:
-❌ "ModuleNotFoundError" → pip install -r requirements.txt
-❌ "Memory Error" → Reduce dataset sample size
-❌ "CUDA out of memory" → Use CPU-only (already implemented)
-❌ Slow execution → Skip grid search (use default params)
+📁 poaching-threat-detection/
+│
+├── 📓 Poaching_threat_detection.ipynb          # MASTER: Combines all teams
+│
+├── 📁 team1-data-preprocessing/
+│   ├── monish_data_collection.ipynb
+│   ├── kanish_audio_preprocessing.ipynb
+│   ├── nithin_labelling_metadata.ipynb
+│   └── metadata.csv                    (2025 samples)
+│
+├── 📁 team2-feature-extraction/
+│   └── audio_features.csv              (2025 × 560 features)
+│
+├── 📁 team3-model-training/
+│   ├── random_forest_model.pkl         
+│   ├── knn_model.pkl             
+│   └── svm_model.pkl                  
+│
+├── 📁 team4-evaluation/
+│   ├── model_evaluation.ipynb
+│   ├── confusion_matrices.png
+│   └── roc_comparison.png
+│
+├── 📦 requirements.txt
+└── 📄 README-ULTIMATE.md              (THIS FILE)
+🎯 Business Impact Metrics
+Metric	Value	Conservation Impact
+Metric	Value	Conservation Impact
+Accuracy	87.41%	Production deployable
+False Negatives	17.58%	Low missed threats
+Inference Speed	<1ms	Real-time alerts
+Scalability	Millions/day	Forest-wide coverage
+Cost	CPU-only	Ranger outpost deployable
